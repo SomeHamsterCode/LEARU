@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русский ЕГЭ Игра - Подготовка к экзамену в стиле Duolingo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Русский ЕГЭ Игра</h1>
+            <div class="user-info">
+                <div class="streak">🔥 <span id="streak-count">0</span></div>
+                <div class="xp">⭐ <span id="xp-count">0</span> XP</div>
+            </div>
+        </header>
+
+        <main>
+            <div class="lesson-selector" id="lesson-selector">
+                <h2>Выберите тему</h2>
+                <div class="topics-grid">
+                    <div class="topic-card" data-topic="орфография">
+                        <h3>Орфография</h3>
+                        <p>Правописание слов</p>
+                    </div>
+                    <div class="topic-card" data-topic="пунктуация">
+                        <h3>Пунктуация</h3>
+                        <p>Расстановка знаков препинания</p>
+                    </div>
+                    <div class="topic-card" data-topic="лексика">
+                        <h3>Лексика</h3>
+                        <p>Слова и их значения</p>
+                    </div>
+                    <div class="topic-card" data-topic="грамматика">
+                        <h3>Грамматика</h3>
+                        <p>Морфология и синтаксис</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-area" id="game-area" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                
+                <div class="question-container">
+                    <h2 id="question-text">Вопрос появится здесь</h2>
+                    <div class="answers-container" id="answers-container">
+                        <!-- Ответы будут добавлены динамически -->
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <button class="next-btn" id="next-btn" style="display: none;">Далее</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Подготовка к ЕГЭ по русскому языку в игровой форме</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
