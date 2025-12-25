@@ -7,52 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>LEARU</h1>
-            <div class="user-info">
-                <div class="streak">🔥 <span id="streak-count">0</span></div>
-                <div class="xp">⭐ <span id="xp-count">0</span> XP</div>
+    <div class="page-container">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">LEARU</a>
             </div>
-        </header>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="lessons.html">Уроки</a></li>
+                <li><a href="about.html">О проекте</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
 
-        <main>
-            <div class="lesson-selector" id="lesson-selector">
-                <h2>Выберите тему</h2>
-                <div class="topics-grid">
-                    <div class="topic-card" data-topic="орфография">
-                        <h3>Орфография</h3>
-                        <p>Правописание слов</p>
-                    </div>
-                    <div class="topic-card" data-topic="пунктуация">
-                        <h3>Пунктуация</h3>
-                        <p>Расстановка знаков препинания</p>
-                    </div>
-                    <div class="topic-card" data-topic="лексика">
-                        <h3>Лексика</h3>
-                        <p>Слова и их значения</p>
-                    </div>
-                    <div class="topic-card" data-topic="грамматика">
-                        <h3>Грамматика</h3>
-                        <p>Морфология и синтаксис</p>
-                    </div>
+        <main class="main-content">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Добро пожаловать в LEARU</h1>
+                    <p>Современный подход к изучению русского языка в игровой форме</p>
+                    <a href="lessons.html" class="cta-btn">Начать обучение</a>
                 </div>
-            </div>
-
-            <div class="game-area" id="game-area" style="display: none;">
-                <div class="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                
-                <div class="question-container">
-                    <h2 id="question-text">Вопрос появится здесь</h2>
-                    <div class="answers-container" id="answers-container">
-                        <!-- Ответы будут добавлены динамически -->
-                    </div>
-                    <div class="feedback" id="feedback"></div>
-                    <button class="next-btn" id="next-btn" style="display: none;">Далее</button>
-                </div>
-            </div>
+            </section>
         </main>
 
         <footer>
