@@ -143,6 +143,16 @@ function initGame() {
             startTopic(topic);
         });
     });
+    
+    // Добавляем функциональность для мобильного меню
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
 }
 
 // Начало изучения темы
@@ -152,8 +162,8 @@ function startTopic(topic) {
     gameState.answeredQuestions = 0;
     gameState.totalQuestions = gameData[topic].length;
     
-    lessonSelector.style.display = 'none';
-    gameArea.style.display = 'flex';
+    if(lessonSelector) lessonSelector.style.display = 'none';
+    if(gameArea) gameArea.style.display = 'flex';
     
     loadQuestion();
     updateProgress();
@@ -166,10 +176,10 @@ function loadQuestion() {
     const questions = gameData[gameState.currentTopic];
     const currentQuestion = questions[gameState.currentQuestionIndex];
     
-    questionText.textContent = currentQuestion.question;
+    if(questionText) questionText.textContent = currentQuestion.question;
     
     // Очищаем предыдущие ответы
-    answersContainer.innerHTML = '';
+    if(answersContainer) answersContainer.innerHTML = '';
     
     // Создаем кнопки для ответов
     currentQuestion.answers.forEach((answer, index) => {
@@ -177,12 +187,12 @@ function loadQuestion() {
         button.className = 'answer-btn';
         button.textContent = answer;
         button.addEventListener('click', () => checkAnswer(index, currentQuestion.correct));
-        answersContainer.appendChild(button);
+        if(answersContainer) answersContainer.appendChild(button);
     });
     
     // Скрываем кнопку "Далее" и скрываем обратную связь
-    nextBtn.style.display = 'none';
-    feedbackDiv.style.display = 'none';
+    if(nextBtn) nextBtn.style.display = 'none';
+    if(feedbackDiv) feedbackDiv.style.display = 'none';
 }
 
 // Проверка ответа
@@ -210,21 +220,25 @@ function checkAnswer(selectedIndex, correctIndex) {
         gameState.xp += 10;
         gameState.streak++;
         
-        feedbackDiv.className = 'feedback correct';
-        feedbackDiv.textContent = `Правильно! ${currentQuestion.explanation}`;
+        if(feedbackDiv) {
+            feedbackDiv.className = 'feedback correct';
+            feedbackDiv.textContent = `Правильно! ${currentQuestion.explanation}`;
+        }
     } else {
         gameState.streak = 0;
         
-        feedbackDiv.className = 'feedback incorrect';
-        feedbackDiv.textContent = `Неправильно. ${currentQuestion.explanation}`;
+        if(feedbackDiv) {
+            feedbackDiv.className = 'feedback incorrect';
+            feedbackDiv.textContent = `Неправильно. ${currentQuestion.explanation}`;
+        }
     }
     
-    feedbackDiv.style.display = 'block';
-    nextBtn.style.display = 'block';
+    if(feedbackDiv) feedbackDiv.style.display = 'block';
+    if(nextBtn) nextBtn.style.display = 'block';
     
     // Обновляем интерфейс
-    xpCount.textContent = gameState.xp;
-    streakCount.textContent = gameState.streak;
+    if(xpCount) xpCount.textContent = gameState.xp;
+    if(streakCount) streakCount.textContent = gameState.streak;
     updateProgress();
 }
 
@@ -232,38 +246,42 @@ function checkAnswer(selectedIndex, correctIndex) {
 function updateProgress() {
     if (gameState.totalQuestions > 0) {
         const progressPercent = (gameState.answeredQuestions / gameState.totalQuestions) * 100;
-        progress.style.width = `${progressPercent}%`;
+        if(progress) progress.style.width = `${progressPercent}%`;
     }
 }
 
 // Переход к следующему вопросу
-nextBtn.addEventListener('click', () => {
-    gameState.currentQuestionIndex++;
-    
-    if (gameState.currentQuestionIndex < gameData[gameState.currentTopic].length) {
-        loadQuestion();
-    } else {
-        // Тема завершена
-        showTopicComplete();
-    }
-});
+if(nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        gameState.currentQuestionIndex++;
+        
+        if (gameState.currentQuestionIndex < gameData[gameState.currentTopic].length) {
+            loadQuestion();
+        } else {
+            // Тема завершена
+            showTopicComplete();
+        }
+    });
+}
 
 // Показ завершения темы
 function showTopicComplete() {
-    questionText.textContent = `Тема "${gameState.currentTopic}" завершена!`;
-    answersContainer.innerHTML = `<p>Вы набрали ${gameState.score} из ${gameState.totalQuestions} очков.</p>`;
-    feedbackDiv.style.display = 'none';
-    nextBtn.style.display = 'none';
+    if(questionText) questionText.textContent = `Тема "${gameState.currentTopic}" завершена!`;
+    if(answersContainer) {
+        answersContainer.innerHTML = `<p>Вы набрали ${gameState.score} из ${gameState.totalQuestions} очков.</p>`;
+    }
+    if(feedbackDiv) feedbackDiv.style.display = 'none';
+    if(nextBtn) nextBtn.style.display = 'none';
     
     // Кнопка возврата к выбору тем
     const returnBtn = document.createElement('button');
     returnBtn.className = 'next-btn';
     returnBtn.textContent = 'Выбрать другую тему';
     returnBtn.addEventListener('click', () => {
-        gameArea.style.display = 'none';
-        lessonSelector.style.display = 'block';
+        if(gameArea) gameArea.style.display = 'none';
+        if(lessonSelector) lessonSelector.style.display = 'block';
     });
-    answersContainer.appendChild(returnBtn);
+    if(answersContainer) answersContainer.appendChild(returnBtn);
 }
 
 // Инициализация при загрузке страницы

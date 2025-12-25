@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уроки - LEARU</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">LEARU</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="lessons.html">Уроки</a></li>
+                <li><a href="about.html">О проекте</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <main class="main-content lessons-page">
+            <section class="lessons-intro">
+                <h1>Выберите тему для изучения</h1>
+                <p>Изучайте русский язык в удобном для вас темпе</p>
+            </section>
+            
+            <div class="lesson-selector" id="lesson-selector">
+                <div class="topics-grid">
+                    <div class="topic-card" data-topic="орфография">
+                        <h3>Орфография</h3>
+                        <p>Правописание слов</p>
+                    </div>
+                    <div class="topic-card" data-topic="пунктуация">
+                        <h3>Пунктуация</h3>
+                        <p>Расстановка знаков препинания</p>
+                    </div>
+                    <div class="topic-card" data-topic="лексика">
+                        <h3>Лексика</h3>
+                        <p>Слова и их значения</p>
+                    </div>
+                    <div class="topic-card" data-topic="грамматика">
+                        <h3>Грамматика</h3>
+                        <p>Морфология и синтаксис</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-area" id="game-area" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                
+                <div class="question-container">
+                    <h2 id="question-text">Вопрос появится здесь</h2>
+                    <div class="answers-container" id="answers-container">
+                        <!-- Ответы будут добавлены динамически -->
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <button class="next-btn" id="next-btn" style="display: none;">Далее</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>LEARU - Современный подход к изучению русского языка</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

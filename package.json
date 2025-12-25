@@ -7,11 +7,16 @@
     "start": "http-server -o",
     "dev": "nodemon server.js"
   },
-  "keywords": ["education", "russian", "ege", "game"],
+  "keywords": [
+    "education",
+    "russian",
+    "ege",
+    "game"
+  ],
   "author": "Student",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.22.1"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
